@@ -4,10 +4,10 @@ from openai import OpenAI
 from data.models.meal_request import MealRequest  # Absolute import
 
 router = APIRouter()
-client = OpenAI()
 
 @router.post("/recommend-meal", tags=["meal"])
 async def recommend_meal(request: Request, meal_request: MealRequest):
+    client = request.app.state.client  # Get client from app state
     assistant_id = request.app.state.assistant_id
     if not assistant_id:
         raise HTTPException(status_code=500, detail="Assistant not initialized")
@@ -42,6 +42,7 @@ async def recommend_meal(request: Request, meal_request: MealRequest):
 
 @router.post("/chat/{thread_id}", tags=["meal"])
 async def chat(thread_id: str, request: Request, user_message: str):
+    client = request.app.state.client  # Get client from app state
     assistant_id = request.app.state.assistant_id
     if not assistant_id:
         raise HTTPException(status_code=500, detail="Assistant not initialized")
