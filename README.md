@@ -14,42 +14,43 @@ My grandma is the best cook in the family. I can proudly say that any success br
 This is a FastAPI backend that leverages OpenAI’s Assistants API to recommend meals based on my grandmother’s recipes. It uses a vector store to search through text files derived from her meal documentation, providing meal suggestions and follow-up chat functionality.
 
 ## Project Structure
-├── Dockerfile
-├── LICENSE
-├── Procfile
-├── README.md
-├── config.json
-├── config.py
-├── converters
-│   ├── legacy-simplified-converter.py
-│   └── structured-meal-converter.py
-├── data
-│   ├── init.py
-│   ├── csv exports
-│   │   ├── Daily Meals Tracker Template - 2025.csv
-│   │   ├── Daily Meals Tracker Template - Simplified Form Legacy.csv
-│   │   ├── Daily Meals Tracker Template - Structured Form Legacy.csv
-│   │   └── init.py
-│   ├── models
-│   │   ├── init.py
-│   │   ├── meal_request.py
-│   │   └── meal_types.py
-│   └── txt exports
-│       ├── init.py
-│       ├── almuerzo.txt
-│       ├── cena.txt
-│       ├── desayuno.txt
-│       ├── postre.txt
-│       └── salsa.txt
-├── folder_structure_gen.py
-├── main.py
-├── requirements.txt
-├── routers
-│   ├── init.py
-│   └── meal_recommendation.py
-└── services
-├── init.py
-└── fileUploader.py
+    ```json
+    ├── Dockerfile
+    ├── LICENSE
+    ├── Procfile
+    ├── README.md
+    ├── config.json
+    ├── config.py
+    ├── converters
+    │   ├── legacy-simplified-converter.py
+    │   └── structured-meal-converter.py
+    ├── data
+    │   ├── init.py
+    │   ├── csv exports
+    │   │   ├── Daily Meals Tracker Template - 2025.csv
+    │   │   ├── Daily Meals Tracker Template - Simplified Form Legacy.csv
+    │   │   ├── Daily Meals Tracker Template - Structured Form Legacy.csv
+    │   │   └── init.py
+    │   ├── models
+    │   │   ├── init.py
+    │   │   ├── meal_request.py
+    │   │   └── meal_types.py
+    │   └── txt exports
+    │       ├── init.py
+    │       ├── almuerzo.txt
+    │       ├── cena.txt
+    │       ├── desayuno.txt
+    │       ├── postre.txt
+    │       └── salsa.txt
+    ├── folder_structure_gen.py
+    ├── main.py
+    ├── requirements.txt
+    ├── routers
+    │   ├── init.py
+    │   └── meal_recommendation.py
+    └── services
+    ├── init.py
+    └── fileUploader.py
 
 
 ## Prerequisites
