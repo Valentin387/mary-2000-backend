@@ -28,3 +28,40 @@ PROJECT_DIR = Path(__file__).resolve().parent.parent
 SIMPLIFIED_CSV = os.path.join(PROJECT_DIR, 'data', 'csv exports', 'Daily Meals Tracker Template - Simplified Form Legacy.csv')
 
 
+Project Structure:
+├── Dockerfile
+├── LICENSE
+├── Procfile
+├── README.md
+├── converters
+│   ├── legacy-simplified-converter.py
+│   └── structured-meal-converter.py
+├── data
+│   ├── __init__.py
+│   ├── csv exports
+│   │   ├── Daily Meals Tracker Template - 2025.csv
+│   │   ├── Daily Meals Tracker Template - Simplified Form Legacy.csv
+│   │   ├── Daily Meals Tracker Template - Structured Form Legacy.csv
+│   │   └── __init__.py
+│   ├── models
+│   │   ├── __init__.py
+│   │   ├── meal_request.py
+│   │   └── meal_types.py
+│   └── txt exports
+│       ├── almuerzo.txt
+│       ├── cena.txt
+│       ├── desayuno.txt
+│       ├── postre.txt
+│       ├── salsa.txt
+│       └── snack.txt
+├── folder_strucutre_gen.py
+├── main.py
+├── requirements.txt
+├── routers
+│   ├── __init__.py
+│   └── meal_recommendation.py
+└── services
+    ├── __init__.py
+    └── fileUploader.py
+
+
