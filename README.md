@@ -10,11 +10,13 @@ Backend for my AI integrated project
 ## Context
 My grandma is the best cook in the family. I can proudly say that any success brought by any of us is due to the energy and nutrients gotten from her insanely crazy good cuisine. She has over 70 years of experience as a housewife, but she won’t last forever. To preserve the performance and future academic and economic success of the family, I need to learn to cook like her. I know how to use the different tools in a kitchen, so that’s not the problem. The challenge is that all she does comes from her spontaneous generation of unique recipes. For a month and a half, I documented her meals in a structured format saved inside a Google Sheet. I also had to include some legacy recipes where the template is basically: ingredients and cooking process. This project is my attempt to immortalize her culinary genius using technology.
 
+However, it also serves as a fastAPI backend template for any app that involves file searching with LLM's development keys
+
 ## Project Overview
 This is a FastAPI backend that leverages OpenAI’s Assistants API to recommend meals based on my grandmother’s recipes. It uses a vector store to search through text files derived from her meal documentation, providing meal suggestions and follow-up chat functionality.
 
 ## Project Structure
-    ```json
+    ```
     ├── Dockerfile
     ├── LICENSE
     ├── Procfile
