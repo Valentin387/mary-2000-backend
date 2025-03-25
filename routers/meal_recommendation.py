@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Request
 from openai import OpenAI
-from ..data.models.meal_request import MealRequest
+from data.models.meal_request import MealRequest
 import asyncio
 from data.models.meal_types import MealType
 
@@ -14,7 +14,7 @@ async def recommend_meal(request: Request, meal_request: MealRequest):
         raise HTTPException(status_code=500, detail="Assistant not set up")
 
     # No need for manual validation; MealRequest already enforces MealType
-    
+
     thread = client.beta.threads.create()
     message = f"Recommend a {meal_request.meal_type} meal. Preferences: {meal_request.preferences or 'none'}"
     client.beta.threads.messages.create(thread_id=thread.id, role="user", content=message)

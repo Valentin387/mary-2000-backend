@@ -20,12 +20,12 @@ app.add_middleware(
   allow_headers=["Authorization", "Content-Type"]
 ) """
 
-from .routers import meal_recommendation
+from routers import meal_recommendation
 app.include_router(meal_recommendation.router)
 
 client = OpenAI()
 
-from .services import fileUploader
+from services import fileUploader
 
 def setup_assistant():
   vector_store_id = fileUploader.set_up_vector_store()
