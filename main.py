@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 app = FastAPI()
 
-""" # Configure CORS settings
+# Configure CORS settings
 origins = [
   "http://localhost", # Add the URL of your Angular frontend
 ]
@@ -18,7 +18,7 @@ app.add_middleware(
   allow_credentials=True,
   allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allow_headers=["Authorization", "Content-Type"]
-) """
+)
 
 from routers import meal_recommendation
 app.include_router(meal_recommendation.router)
@@ -54,7 +54,7 @@ app.state.assistant_id = None
 async def startup_event():
   app.state.assistant_id = setup_assistant()
 
-@ app.add_event_handler("startup", startup_event)
+app.add_event_handler("startup", startup_event)
 
 @ app.get("/")
 async def root():
