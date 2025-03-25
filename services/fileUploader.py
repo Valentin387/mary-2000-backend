@@ -9,7 +9,7 @@ _PROJECT_DIR = Path(__file__).resolve().parent.parent
 TXT_EXPORTS_DIR = _PROJECT_DIR / "data" / "txt exports"
 
 def set_up_vector_store():
-    existing_files = {f.name: f.id for f in client.files.list()}
+    existing_files = {f.filename: f.id for f in client.files.list()}
     file_ids = []
 
     for meal_type in MealType:
@@ -26,14 +26,14 @@ def set_up_vector_store():
                 print(f"File {file_name} already uploaded, using existing ID: {existing_files[file_name]}")
 
     vector_stores = client.beta.vector_stores.list()
-    vector_store = next((vs for vs in vector_stores.data if vs.name == "MealPlans"), None)
+    vector_store = next((vs for vs in vector_stores.data if vs.name == "GrandmasMeals"), None)
     if not vector_store:
-        vector_store = client.beta.vector_stores.create(name="MealPlans")
+        vector_store = client.beta.vector_stores.create(name="GrandmasMeals")
         print(f"Created vector store with ID: {vector_store.id}")
     else:
         print(f"Using existing vector store with ID: {vector_store.id}")
 
-    current_file_ids = set(f.file_id for f in client.beta.vector_stores.files.list(vector_store_id=vector_store.id).data)
+    current_file_ids = {f.file_id for f in client.beta.vector_stores.files.list(vector_store_id=vector_store.id).data}
     missing_file_ids = set(file_ids) - current_file_ids
     if missing_file_ids:
         client.beta.vector_stores.file_batches.create(

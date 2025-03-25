@@ -7,3 +7,4 @@ class MealType(str, Enum):
     POSTRE = "postre"
     SALSA = "salsa"
     SNACK = "snack"
+    SURPRISE = "surprise"  # Added for the "Surprise" option
