@@ -8,9 +8,9 @@ TXT_EXPORTS_DIR = _PROJECT_DIR / "data" / "txt exports"
 
 """ I struggled a little too much with the 'file uploading' part of the solution, it was before finding the online UI,
 so I rather used it that spending too much time uploading the files by code, it is possible though, but I still recommend
-using config.py and config.json to help you save the refs to the asiistant and vector store, for some reason (not really
-surprising) the openai SDK sometimes behaves contrary to what the foccial documentation says, so it is better to have a
-backup plan, and the config file is a good one. 
+using config.py and config.json to help you save the refs to the asisstant and vector store, for some reason (not really
+surprising) the openai SDK sometimes behaves contrary to what the official documentation says, so it is better to have a
+backup plan, and the config file is a good one.
  """
 def set_up_vector_store(client: OpenAI):
     config = get_config()
