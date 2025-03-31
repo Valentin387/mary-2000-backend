@@ -4,6 +4,11 @@ from openai import OpenAI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from config import get_config, save_config
+import logging
+from fastapi import Request
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
@@ -20,6 +25,13 @@ origins = [
   "http://localhost:4200", # Add the URL of your Angular frontend
   "*", # Temporarily allow all origins for testing
 ]
+
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    logger.info(f"Request: {request.method} {request.url}")
+    response = await call_next(request)
+    logger.info(f"Response status: {response.status_code}")
+    return response
 
 app.add_middleware(
   CORSMiddleware,
