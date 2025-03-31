@@ -8,6 +8,7 @@ router = APIRouter()
 # Explicit OPTIONS handler for /recommend-meal
 @router.options("/recommend-meal")
 async def options_recommend_meal(request: Request):
+    print("Handling OPTIONS request for /recommend-meal")  # Debug log
     headers = {
         "Access-Control-Allow-Origin": "http://localhost:4200",
         "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
