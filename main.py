@@ -4,11 +4,6 @@ from openai import OpenAI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from config import get_config, save_config
-import logging
-from fastapi import Request
-
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
 
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
@@ -23,22 +18,14 @@ app.state.client = client  # Store client in app state
 origins = [
   "http://localhost", # Add the URL of your Angular frontend
   "http://localhost:4200", # Add the URL of your Angular frontend
-  "*", # Temporarily allow all origins for testing
 ]
-
-@app.middleware("http")
-async def log_requests(request: Request, call_next):
-    logger.info(f"Request: {request.method} {request.url}")
-    response = await call_next(request)
-    logger.info(f"Response status: {response.status_code}")
-    return response
 
 app.add_middleware(
   CORSMiddleware,
   allow_origins=origins,
   allow_credentials=True,
   allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allow_headers=["Authorization", "Content-Type", "*"] ## Allow all headers for testing
+  allow_headers=["Authorization", "Content-Type"] ## Allow all headers for testing
 )
 
 from routers import meal_recommendation # Absolute import

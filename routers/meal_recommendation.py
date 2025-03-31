@@ -5,17 +5,6 @@ from data.models.meal_request import MealRequest  # Absolute import
 
 router = APIRouter()
 
-# Explicit OPTIONS handler for /recommend-meal
-@router.options("/recommend-meal")
-async def options_recommend_meal(request: Request):
-    print("Handling OPTIONS request for /recommend-meal")  # Debug log
-    headers = {
-        "Access-Control-Allow-Origin": "http://localhost:4200",
-        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    }
-    return JSONResponse(status_code=200, content={}, headers=headers)
-
 @router.post("/recommend-meal", tags=["meal"])
 async def recommend_meal(request: Request, meal_request: MealRequest):
     client = request.app.state.client
