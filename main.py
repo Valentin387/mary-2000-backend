@@ -18,6 +18,7 @@ app.state.client = client  # Store client in app state
 origins = [
   "http://localhost", # Add the URL of your Angular frontend
   "http://localhost:4200", # Add the URL of your Angular frontend
+  "*", # Temporarily allow all origins for testing
 ]
 
 app.add_middleware(
@@ -25,7 +26,7 @@ app.add_middleware(
   allow_origins=origins,
   allow_credentials=True,
   allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allow_headers=["Authorization", "Content-Type"]
+  allow_headers=["Authorization", "Content-Type", "*"] ## Allow all headers for testing
 )
 
 from routers import meal_recommendation # Absolute import
