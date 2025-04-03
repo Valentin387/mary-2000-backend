@@ -16,7 +16,6 @@ app.state.client = client  # Store client in app state
 
 # Configure CORS settings
 origins = [
-  "http://localhost", # Add the URL of your Angular frontend
   "http://localhost:4200", # Add the URL of your Angular frontend
 ]
 
@@ -24,7 +23,7 @@ app.add_middleware(
   CORSMiddleware,
   allow_origins=origins,
   allow_credentials=True,
-  allow_methods=["*"],
+  allow_methods=["GET", "POST", "OPTIONS"],  # Explicitly include OPTIONS
   allow_headers=["*"], ## Allow all headers for testing
 )
 
