@@ -24,7 +24,7 @@ app.add_middleware(
   allow_origins=origins,
   allow_credentials=True,
   allow_methods=["GET", "POST", "OPTIONS"],  # Explicitly include OPTIONS
-  allow_headers=["*"], ## Allow all headers for testing
+  allow_headers=["Content-Type"], ## Allow all headers for testing
 )
 
 from routers import meal_recommendation # Absolute import
